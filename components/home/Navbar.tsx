@@ -15,14 +15,14 @@ const navLinks = [
   { label: "Packages", href: "/packages" },
   { label: "Services Area", href: "/services-area" },
   { label: "About Us", href: "/about-us" },
-  { label: "How It Works", href: "/how-it-works" },
+  { label: "How It Works", href: "/how-it-work" },
   { label: "Sample Report", href: "/sample-report" },
 ];
 
 export default function Navbar() {
   return (
-    <header className="w-full bg-[#FFFFFF]">
-      <div className="mx-auto flex h-[72px] container items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="w-full bg-[#FFFFFF] sticky top-0 z-50">
+      <div className="mx-auto  flex h-[72px] container items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Left: Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <div className="flex h-[34px] w-[34px] items-center justify-center rounded-[4px] bg-[#F4BE18]">
