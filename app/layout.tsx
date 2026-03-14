@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Manrope } from "next/font/google";
+import NextTopLoader from 'nextjs-toploader'
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={manrope.className}>
       <body className="font-manrope antialiased">
+      <NextTopLoader color="#FBBF24" height={3} showSpinner={false} />
         {children}
       </body>
     </html>

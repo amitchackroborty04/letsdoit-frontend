@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Menu } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -20,6 +21,16 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
+
   return (
     <header className="w-full bg-[#FFFFFF] sticky top-0 z-50">
       <div className="mx-auto  flex h-[72px] container items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -47,7 +58,10 @@ export default function Navbar() {
             <Link
               key={item.label}
               href={item.href}
-              className="text-[18px] font-medium text-[#131313] transition hover:text-[#F4BE18]"
+              aria-current={isActive(item.href) ? "page" : undefined}
+              className={`text-[18px] font-medium transition hover:text-[#F4BE18] ${
+                isActive(item.href) ? "text-[#F4BE18]" : "text-[#131313]"
+              }`}
             >
               {item.label}
             </Link>
@@ -115,7 +129,12 @@ export default function Navbar() {
                       <SheetClose asChild key={item.label}>
                         <Link
                           href={item.href}
-                          className="rounded-md px-3 py-3 text-[15px] font-medium text-[#222222] transition hover:bg-[#F8F8F8] hover:text-[#F4BE18]"
+                          aria-current={isActive(item.href) ? "page" : undefined}
+                          className={`rounded-md px-3 py-3 text-[15px] font-medium transition hover:bg-[#F8F8F8] hover:text-[#F4BE18] ${
+                            isActive(item.href)
+                              ? "text-[#F4BE18]"
+                              : "text-[#222222]"
+                          }`}
                         >
                           {item.label}
                         </Link>
